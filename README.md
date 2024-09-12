@@ -1,3 +1,3 @@
 # to-do
--App echa en vanilla Javascript
+-App construida en vanilla Javascript usando vite
 
