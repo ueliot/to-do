@@ -61,7 +61,7 @@ const toggleTodo = (todoId) => {
     
     //this is not optimal whit 1000 todos this is doing 1000 iteractions of return todo
     state.todos = state.todos.map( todo => {
-        if (todo.id ===todoId){
+        if (todo.id === todoId){
             todo.done=!todo.done
         }
         return todo;

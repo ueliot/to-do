@@ -25,8 +25,10 @@ export const App = (element)=> {
 
     //Referencias HTMLs
     const newDescriptionInput = document.querySelector(elementId.NewTodoInput);
-
+    const todoListUl = document.querySelector(elementId.TodoList);
     //Add Listeners
+
+    //add todo---------------------------------------------
     newDescriptionInput.addEventListener('keyup', (event)=>{
         if(event.keyCode !== 13) return;
         if(event.target.value.trim() =='') return
@@ -34,6 +36,16 @@ export const App = (element)=> {
         todoStore.addTodo(event.target.value);
         displayTodos();
         event.target.value='';
+
+    })
+
+    //togle todos-------------------------------------------
+    todoListUl.addEventListener('click',(event)=>{
+        //console.log(event.target.closest('[data-id]'));
+        const element = event.target.closest('[data-id]');
+        //console.log(element.getAttribute('data-id'));
+        todoStore.toggleTodo(element.getAttribute('data-id'));
+        displayTodos();
 
     })
 
