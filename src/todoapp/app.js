@@ -32,7 +32,7 @@ export const App = (element)=> {
     newDescriptionInput.addEventListener('keyup', (event)=>{
         if(event.keyCode !== 13) return;
         if(event.target.value.trim() =='') return
-        console.log(event.target.value);
+        //console.log(event.target.value);
         todoStore.addTodo(event.target.value);
         displayTodos();
         event.target.value='';
@@ -46,6 +46,19 @@ export const App = (element)=> {
         //console.log(element.getAttribute('data-id'));
         todoStore.toggleTodo(element.getAttribute('data-id'));
         displayTodos();
+
+    })
+
+    //delete todo-----------------------------------------
+    todoListUl.addEventListener('click',(event)=>{
+        const element = event.target.closest('[data-id]');
+        const isDestroyElement = event.target.className=='destroy';
+       
+        if(!element || !isDestroyElement) return;
+        
+        todoStore.deleteTodo(element.getAttribute('data-id'));
+        displayTodos();
+       
 
     })
 
